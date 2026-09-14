@@ -1,0 +1,1 @@
+export default function AccessDenied(){return <main style={{maxWidth:600,margin:'15vh auto',padding:24}}><h1>회사 계정으로 로그인해 주세요</h1><p>intakefoods.kr 계정만 행사 데이터에 접근할 수 있습니다.</p><p>관리자: yujin.oh@intakefoods.kr</p><a href="/signout-with-chatgpt?return_to=/" target="_top">계정 변경</a></main>}

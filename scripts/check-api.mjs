@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {makeTemplate} from '../lib/template.ts';
+const fetch=(url,options={})=>globalThis.fetch(url,{...options,headers:{Cookie:'__sites_local_auth=1',...options.headers}});
+const root='http://localhost:5173';
+const sources=JSON.parse(readFileSync(new URL('../data/base.json',import.meta.url),'utf8'));
+const archive=JSON.parse(readFileSync(new URL('../data/archive.json',import.meta.url),'utf8'));
+const response=await fetch(root);assert.equal(response.status,200);assert.ok((await response.text()).includes('행사 운영'));
+const index=await fetch(root+'/api/sources');assert.equal(index.status,200);assert.equal((await index.json()).length,26);
+const sid=archive[0].sheets[1].id,original=JSON.parse(readFileSync(new URL('../data/'+sid+'.json',import.meta.url),'utf8'));
+const sheet=await fetch(root+'/api/sources?id='+sid);assert.equal(sheet.status,200);assert.deepEqual(await sheet.json(),original);
+assert.equal((await fetch(root+'/api/sources?id=../../etc/passwd')).status,400);
+const e={...makeTemplate(sources),id:'local-qa-'+Date.now(),title:'자동 검증 · 로컬 전용'};
+async function save(payload,origin=root){return fetch(root+'/api/events',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin},body:JSON.stringify(payload)})}
+assert.equal((await save({...e,title:''})).status,400);assert.equal((await save(e,'https://untrusted.example')).status,403);
+const first=await save(e);assert.equal(first.status,200);assert.equal((await first.json()).version,1);
+const reload=await (await fetch(root+'/api/events?id='+e.id)).json();assert.equal(reload.title,e.title);assert.equal(reload.lines[0].price,e.lines[0].price);
+const second=await save({...reload,title:'저장 재검증'});assert.equal(second.status,200);assert.equal((await second.json()).version,2);
+assert.equal((await save(reload)).status,409);
+writeFileSync(new URL('../.sites-runtime/qa-cleanup.sql',import.meta.url),`DELETE FROM event_plans WHERE id='${e.id}';`);
+console.log('PASS: page, 26-file index, exact archive sheet, traversal rejection, invalid input, CSRF, durable create/read/update, version conflict');

@@ -1,0 +1,55 @@
+/* Constrain dialog contents rather than cropping the viewport. */
+[data-slot="dialog-content"].flavor-modal,
+[data-slot="dialog-content"].sales-detail-modal {
+ width:calc(100vw - 24px)!important;
+ max-width:620px!important;
+ max-height:calc(100dvh - 24px)!important;
+ display:flex!important;flex-direction:column!important;overflow:hidden!important;
+ padding:20px!important;gap:12px!important;box-sizing:border-box;
+}
+[data-slot="dialog-content"].sales-detail-modal{max-width:1440px!important}
+[data-slot="dialog-header"]{flex:none;min-width:0;padding-right:22px}
+[data-slot="dialog-description"]{line-height:1.5;overflow-wrap:anywhere}
+[data-slot="dialog-footer"]{flex:none}
+.flavor-modal .flavor-list{min-height:0;flex:1 1 auto;overflow:auto;max-height:40dvh;grid-template-columns:1fr!important;overscroll-behavior:contain}
+.flavor-modal .modal-tools,.flavor-modal .bulk-surcharge{flex:none;flex-direction:row;flex-wrap:wrap;min-width:0;gap:8px}
+.flavor-modal .history-search{flex:1;min-width:120px}
+.flavor-modal .bulk-surcharge label{display:flex;align-items:center;flex-wrap:wrap;gap:5px}
+.flavor-modal .flavor-choice{display:flex;flex-wrap:wrap;gap:8px}
+.flavor-modal .flavor-select{display:flex;align-items:center;gap:8px;flex:1;min-width:120px;cursor:pointer}
+.flavor-modal .flavor-select b{white-space:normal;overflow-wrap:anywhere;font-size:14px}
+.flavor-modal .surcharge{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.flavor-modal .surcharge small{font-size:12px}
+.flavor-modal .surcharge input{width:90px;min-width:0}
+.sales-detail-modal .sheet-table{min-height:0;flex:1 1 auto;overflow:auto;margin:0;overscroll-behavior:contain}
+.sales-detail-modal table{border-collapse:collapse;min-width:2400px}
+.sales-detail-modal th,.sales-detail-modal td{border:1px solid #ddd;padding:10px;white-space:nowrap;text-align:right;font-size:14px}
+.sales-detail-modal thead th{position:sticky;top:0;background:#f5f5f5;z-index:1}
+.sales-detail-modal tfoot td{background:#fafafa;font-weight:700}
+.operations-page .sheet-table{width:100%;max-width:100%;margin-left:0!important;margin-right:0!important}
+.operations-page .sheet-table .cell-input{width:120px;max-width:100%;text-align:right}
+.operations-page .sheet-table th{white-space:normal;min-width:100px;color:#444}
+.operations-page .sheet-table details{max-width:360px;white-space:normal;text-align:left;overflow-wrap:anywhere}
+.operations-page .formula-cell{white-space:normal;min-width:230px;text-align:left}
+.operations-page .formula-cell code{font-size:12px;overflow-wrap:anywhere}
+.operations-page .recent-cards h3{white-space:normal}
+.operations-page .recent-cards details{font-size:12px;overflow-wrap:anywhere}
+.operations-page .recent-panel{scroll-margin-top:16px}
+.saved-plans{margin-bottom:18px}.saved-plans select{border:1px solid #ddd;padding:8px;max-width:70%}
+.scheme-summary .scheme-summary-head,.scheme-summary .scheme-summary-row{grid-template-columns:minmax(60px,1fr) minmax(100px,2fr) minmax(90px,1fr)}
+.scheme-summary .scheme-summary-head span:nth-child(2),.scheme-summary .scheme-summary-row span{display:block!important;overflow-wrap:anywhere}
+@media(max-width:480px){
+ [data-slot="dialog-content"].flavor-modal,[data-slot="dialog-content"].sales-detail-modal{padding:14px!important;gap:9px!important}
+ .flavor-modal .bulk-surcharge{padding:8px}
+ .flavor-modal .btn{font-size:13px;padding:8px}
+ .scheme-summary .scheme-summary-head,.scheme-summary .scheme-summary-row{padding:10px 8px;gap:8px;font-size:12px}
+ .scheme-summary .scheme-summary-row strong{font-size:14px}
+}
+@media(max-height:500px){
+ [data-slot="dialog-content"].flavor-modal{overflow-y:auto!important}
+ .flavor-modal .flavor-list{flex:none;max-height:180px}
+ [data-slot="dialog-description"]{font-size:12px}
+}
+.workflow-steps{display:flex;flex-wrap:wrap;gap:10px 24px;padding:16px 0;border-top:1px solid #e5e5e5;margin-top:16px;font-size:14px}
+.event-overview details{padding-top:8px}.event-overview summary{cursor:pointer;font-size:14px}
+.event-overview .actions{display:flex;flex-wrap:wrap;gap:8px}.event-overview .section-head{flex-wrap:wrap;gap:16px}

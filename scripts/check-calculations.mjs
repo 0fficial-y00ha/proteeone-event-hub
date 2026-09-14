@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {settlement,totals,eventSchema} from '../lib/event-model.ts';
+import {makeTemplate} from '../lib/template.ts';
+const sources=JSON.parse(readFileSync(new URL('../data/base.json',import.meta.url),'utf8'));
+const e=makeTemplate(sources);assert.equal(eventSchema.safeParse(e).success,true);
+const p=settlement(43900,e.blocks[0]);
+assert.equal(p.setting,54875);assert.equal(p.sales,49387.5);assert.equal(p.fee,6585);assert.equal(p.settled,42802.5);assert.equal(p.effective,.025);
+assert.equal(settlement(43900,{...e.blocks[0],basis:'세팅가'}).fee,8231.25);
+assert.equal(settlement(43900,{...e.blocks[0],basis:'자사 매출가'}).fee,7408.125);
+assert.equal(totals(e,'planned').profit,null);assert.equal(totals(e,'actual').profit,null);
+const complete={...e,lines:[{group:'대용량',option:'곡물2',block:0,price:43900,cost:21758,planned:2,actual:0,source:'검증'}],media:[],other:0};
+assert.equal(totals(complete,'planned').profit,35365);assert.equal(totals(complete,'actual').profit,0);assert.equal(totals(complete,'actual').roas,null);
+assert.equal(eventSchema.safeParse({...e,end:'2026-01-01'}).success,false);
+assert.equal(eventSchema.safeParse({...e,blocks:[{...e.blocks[0],discount:1}]}).success,false);
+assert.equal(eventSchema.safeParse({...e,url:'javascript:alert(1)'}).success,false);
+console.log('PASS: template, three fee bases, source reconciliation, incomplete/zero quantities, profit, invalid date order/discount/URL');
