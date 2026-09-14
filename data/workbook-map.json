@@ -1,0 +1,263 @@
+{
+  "workbook": "26년 행사시트 디벨롭 (1).xlsx",
+  "sheet": "시트_260831",
+  "sha256": "1b1515765b88e541e82bd8c9797b9e08d7852cb1ed52b334741f0cfecb4145b3",
+  "profitRows": [
+    {
+      "row": 18,
+      "label": "판매수량",
+      "target": 500.0,
+      "actual": "=AB3",
+      "delta": "=IFERROR(I18-H18,\"\")",
+      "achievement": "=IFERROR(I18/H18,\"\")"
+    },
+    {
+      "row": 19,
+      "label": "세팅가 매출",
+      "target": "=B26*$H$18",
+      "actual": "=AC3",
+      "delta": "=IFERROR(I19-H19,\"\")",
+      "achievement": "=IFERROR(I19/H19,\"\")"
+    },
+    {
+      "row": 20,
+      "label": "(-) 총 할인",
+      "target": "=Y3",
+      "actual": "=AD3",
+      "delta": "=IFERROR(I20-H20,\"\")",
+      "achievement": "=IFERROR(I20/H20,\"\")"
+    },
+    {
+      "row": 21,
+      "label": "(-) 채널 부담",
+      "target": "=H20*(1-$D$10)",
+      "actual": "=I20*(1-$D$10)",
+      "delta": "=IFERROR(I21-H21,\"\")",
+      "achievement": "=IFERROR(I21/H21,\"\")"
+    },
+    {
+      "row": 22,
+      "label": "(-) 자사 부담",
+      "target": "=H20-H21",
+      "actual": "=I20-I21",
+      "delta": "=IFERROR(I22-H22,\"\")",
+      "achievement": "=IFERROR(I22/H22,\"\")"
+    },
+    {
+      "row": 23,
+      "label": "고객 결제가",
+      "target": "=H19-H20",
+      "actual": "=AE3",
+      "delta": "=IFERROR(I23-H23,\"\")",
+      "achievement": "=IFERROR(I23/H23,\"\")"
+    },
+    {
+      "row": 24,
+      "label": "자사 매출가",
+      "target": "=H19-H22",
+      "actual": "=I19-I22",
+      "delta": "=IFERROR(I24-H24,\"\")",
+      "achievement": "=IFERROR(I24/H24,\"\")"
+    },
+    {
+      "row": 25,
+      "label": "원가",
+      "target": "=AA3",
+      "actual": "=AF3",
+      "delta": "=IFERROR(I25-H25,\"\")",
+      "achievement": "=IFERROR(I25/H25,\"\")"
+    },
+    {
+      "row": 26,
+      "label": "원가율",
+      "target": "=H25/H24",
+      "actual": "=I25/I24",
+      "delta": "=IFERROR(I26-H26,\"\")",
+      "achievement": "=IFERROR(I26/H26,\"\")"
+    },
+    {
+      "row": 27,
+      "label": "매출이익",
+      "target": "=H24-H25",
+      "actual": "=I24-I25",
+      "delta": "=IFERROR(I27-H27,\"\")",
+      "achievement": "=IFERROR(I27/H27,\"\")"
+    },
+    {
+      "row": 28,
+      "label": "매출이익%",
+      "target": "=H27/H24",
+      "actual": "=I27/I24",
+      "delta": "=IFERROR(I28-H28,\"\")",
+      "achievement": "=IFERROR(I28/H28,\"\")"
+    },
+    {
+      "row": 29,
+      "label": "수수료",
+      "target": "=D30*H23",
+      "actual": "=D30*I23",
+      "delta": "=IFERROR(I29-H29,\"\")",
+      "achievement": "=IFERROR(I29/H29,\"\")"
+    },
+    {
+      "row": 30,
+      "label": "배송비",
+      "target": "=2860*H18",
+      "actual": "=2860*I18",
+      "delta": "=IFERROR(I30-H30,\"\")",
+      "achievement": "=IFERROR(I30/H30,\"\")"
+    },
+    {
+      "row": 31,
+      "label": "물류비",
+      "target": "=(469+33)*H18",
+      "actual": "=(469+33)*I18",
+      "delta": "=IFERROR(I31-H31,\"\")",
+      "achievement": "=IFERROR(I31/H31,\"\")"
+    },
+    {
+      "row": 32,
+      "label": "광고비%",
+      "target": 0.05,
+      "actual": 0.05,
+      "delta": "=IFERROR(I32-H32,\"\")",
+      "achievement": "=IFERROR(I32/H32,\"\")"
+    },
+    {
+      "row": 33,
+      "label": "광고비",
+      "target": "=H24*H32",
+      "actual": "=I24*I32",
+      "delta": "=IFERROR(I33-H33,\"\")",
+      "achievement": "=IFERROR(I33/H33,\"\")"
+    },
+    {
+      "row": 34,
+      "label": "공헌이익",
+      "target": "=H27-H29-H30-H31-H33",
+      "actual": "=I27-I29-I30-I31-I33",
+      "delta": "=I34-H34",
+      "achievement": "=I34/H34"
+    },
+    {
+      "row": 35,
+      "label": "공헌이익율",
+      "target": "=H34/H24",
+      "actual": "=I34/I24",
+      "delta": "=I35-H35",
+      "achievement": "=I35/H35"
+    }
+  ],
+  "salesColumns": [
+    {
+      "column": "O",
+      "label": "품목",
+      "formula": null
+    },
+    {
+      "column": "P",
+      "label": "구성",
+      "formula": null
+    },
+    {
+      "column": "Q",
+      "label": "세팅가",
+      "formula": "=IF($T6=\"\",\"\",$T6/(1-('시트_260831'!$B$10*(1-'시트_260831'!$D$10))-('시트_260831'!$B$10*'시트_260831'!$D$10)))"
+    },
+    {
+      "column": "R",
+      "label": "할인가",
+      "formula": "=IF($Q6=\"\",\"\",$Q6*('시트_260831'!$B$10*(1-'시트_260831'!$D$10)))"
+    },
+    {
+      "column": "S",
+      "label": "추가할인",
+      "formula": "=IF($Q6=\"\",\"\",$Q6*('시트_260831'!$B$10*'시트_260831'!$D$10))"
+    },
+    {
+      "column": "T",
+      "label": "소비자 결제가",
+      "formula": "=IFERROR(__xludf.DUMMYFUNCTION(\"IF(OR($O6=\"\"\"\",$P6=\"\"\"\"),\"\"\"\",LET(compositionQty,VALUE(REGEXEXTRACT(TO_TEXT('시트_260831'!$D$7),\"\"\\d+\"\")),ruleQty,IF(COUNTIFS(RAW!$Y$4:$Y$30,$O6,RAW!$Z$4:$Z$30,compositionQty)>0,compositionQty,IF(AND(REGEXMATCH(TO_TEXT($O6),\"\"대용량\"\"),compositionQty=3),1,comp\"&\"ositionQty)),baseFlavor,IFERROR(INDEX(FILTER(RAW!$AA$4:$AA$30,RAW!$Y$4:$Y$30=$O6,RAW!$Z$4:$Z$30=ruleQty),1),\"\"\"\"),extraUnit,IFERROR(INDEX(FILTER(RAW!$AB$4:$AB$30,RAW!$Y$4:$Y$30=$O6,RAW!$Z$4:$Z$30=ruleQty),1),0),nonBaseQty,IF(\"\"곡물\"\"=baseFlavor,0,2),'시트_260\"&\"831'!$D$20-ABS('시트_260831'!$C$21)+nonBaseQty*extraUnit))\"),44900.0)"
+    },
+    {
+      "column": "U",
+      "label": "원가",
+      "formula": "=IFERROR(__xludf.DUMMYFUNCTION(\"IF(OR($O6=\"\"\"\",$P6=\"\"\"\"),\"\"\"\",LET(normalizedComposition,REGEXREPLACE(TO_TEXT('시트_260831'!$D$7),\"\"\\s+\"\",\"\"\"\"),isPouchBox,AND(REGEXMATCH(TO_TEXT($O6),\"\"파우치\"\"),REGEXMATCH(normalizedComposition,\"\"^[12]박스$\"\")),costProduct,IF(isPouchBox,\"\"인박스\"\",$O6),applyRawUni\"&\"tCount,NOT(isPouchBox),SUMPRODUCT((RAW!$S$4:$S$30=costProduct)*(RAW!$T$4:$T$30=\"\"곡물\"\")*RAW!$U$4:$U$30*IF(applyRawUnitCount,IF(RAW!$V$4:$V$30=\"\"\"\",1,RAW!$V$4:$V$30),1))*2))\"),21758.0)"
+    },
+    {
+      "column": "V",
+      "label": "예상판매수량",
+      "formula": null
+    },
+    {
+      "column": "W",
+      "label": "비중(%)",
+      "formula": "=V6/V3"
+    },
+    {
+      "column": "X",
+      "label": "세팅가X예상판매량",
+      "formula": "=Q6*V6"
+    },
+    {
+      "column": "Y",
+      "label": "할인가X예상판매량",
+      "formula": "=(R6+S6)*V6"
+    },
+    {
+      "column": "Z",
+      "label": "소비자 결제가X예상판매량",
+      "formula": "=T6*V6"
+    },
+    {
+      "column": "AA",
+      "label": "원가X예상판매량",
+      "formula": "=V6*U6"
+    },
+    {
+      "column": "AB",
+      "label": "실판매량",
+      "formula": null
+    },
+    {
+      "column": "AC",
+      "label": "세팅가X실판매량",
+      "formula": "=Q6*$AB6"
+    },
+    {
+      "column": "AD",
+      "label": "할인가X실판매량",
+      "formula": "=(R6+S6)*$AB6"
+    },
+    {
+      "column": "AE",
+      "label": "소비자 결제가X실판매량",
+      "formula": "=T6*AB6"
+    },
+    {
+      "column": "AF",
+      "label": "원가X실판매량",
+      "formula": "=U6*$AB6"
+    },
+    {
+      "column": "AG",
+      "label": "비중(%)",
+      "formula": "=AB6/$AB$3"
+    },
+    {
+      "column": "AH",
+      "label": "오차",
+      "formula": "=AG6-W6"
+    },
+    {
+      "column": "AI",
+      "label": "행사 블록",
+      "formula": null
+    }
+  ],
+  "defaults": {
+    "invoiceCount": 380.0,
+    "targetAdRate": 0.05,
+    "actualAdRate": 0.05
+  }
+}
